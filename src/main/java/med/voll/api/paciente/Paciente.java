@@ -1,7 +1,9 @@
 package med.voll.api.paciente;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
+import med.voll.api.medico.endereco.Endereco;
 import med.voll.api.paciente.endereco.DadosEnderecoPaciente;
 import med.voll.api.paciente.endereco.EnderecoPaciente;
 
@@ -16,6 +18,7 @@ public class Paciente {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    private Boolean ativo;
     private String nome;
     private String email;
     private String telefone;
@@ -25,10 +28,27 @@ public class Paciente {
     private EnderecoPaciente endereco;
 
     public Paciente(DadosCadastroPaciente dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.cpf = dados.cpf();
         this.endereco = new EnderecoPaciente(dados.endereco());
+    }
+
+    public void AtualizarPaciente(@Valid DadosAtualizacaoPaciente dados) {
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+        if (dados.endereco() != null){
+            this.endereco.AtualizarEnderecoPaciente(dados.endereco());
+        }
+    }
+
+    public void Excluir() {
+        this.ativo = false;
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.medico.endereco.DadosEndereco;
 
 @Embeddable
 @Getter
@@ -26,5 +27,29 @@ public class EnderecoPaciente {
         this.cidade = dados.cidade();
         this.uf = dados.uf();
         this.cep = dados.cep();
+    }
+
+    public void AtualizarEnderecoPaciente(DadosEnderecoPaciente dados) {
+        if (dados.cidade() != null){
+            this.cidade = dados.cidade();
+        }
+        if (dados.logradouro() != null){
+            this.logradouro = dados.logradouro();
+        }
+        if (dados.numero() != null){
+            this.numero = dados.numero();
+        }
+        if (dados.bairro() != null){
+            this.bairro = dados.bairro();
+        }
+        if (dados.complemento() != null){
+            this.complemento = dados.complemento();
+        }
+        if (dados.uf() != null){
+            this.uf = dados.uf();
+        }
+        if (dados.cep() != null){
+            this.cep = dados.cep();
+        }
     }
 }
