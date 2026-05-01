@@ -1,11 +1,9 @@
-package med.voll.api.paciente;
+package med.voll.api.domain.paciente;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.*;
-import med.voll.api.medico.endereco.Endereco;
-import med.voll.api.paciente.endereco.DadosEnderecoPaciente;
-import med.voll.api.paciente.endereco.EnderecoPaciente;
+import med.voll.api.domain.paciente.endereco.EnderecoPaciente;
 
 @Table(name = "pacientes")
 @Entity(name = "Paciente")
@@ -17,7 +15,7 @@ import med.voll.api.paciente.endereco.EnderecoPaciente;
 public class Paciente {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private Boolean ativo;
     private String nome;
     private String email;

@@ -1,4 +1,4 @@
-package med.voll.api.medico.endereco;
+package med.voll.api.domain.paciente.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -7,48 +7,48 @@ import lombok.NoArgsConstructor;
 
 @Embeddable
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Endereco {
+@NoArgsConstructor
+public class EnderecoPaciente {
     private String logradouro;
-    private String bairro;
-    private String cep;
     private String numero;
     private String complemento;
+    private String bairro;
     private String cidade;
     private String uf;
+    private String cep;
 
-    public Endereco(DadosEndereco dados) {
+    public EnderecoPaciente(DadosEnderecoPaciente dados) {
         this.logradouro = dados.logradouro();
-        this.bairro = dados.bairro();
-        this.cep = dados.cep();
         this.numero = dados.numero();
         this.complemento = dados.complemento();
+        this.bairro = dados.bairro();
         this.cidade = dados.cidade();
         this.uf = dados.uf();
+        this.cep = dados.cep();
     }
 
-    public void atualizarInformacoes(DadosEndereco dados) {
-        if (dados.logradouro() != null){
-            this.logradouro = dados.logradouro();
-        }
-        if (dados.bairro() != null){
-            this.bairro = dados.bairro();
-        }
-        if (dados.cep() != null){
-            this.cep = dados.cep();
-        }
-        if (dados.uf() != null){
-            this.uf = dados.uf();
-        }
+    public void AtualizarEnderecoPaciente(DadosEnderecoPaciente dados) {
         if (dados.cidade() != null){
             this.cidade = dados.cidade();
+        }
+        if (dados.logradouro() != null){
+            this.logradouro = dados.logradouro();
         }
         if (dados.numero() != null){
             this.numero = dados.numero();
         }
+        if (dados.bairro() != null){
+            this.bairro = dados.bairro();
+        }
         if (dados.complemento() != null){
             this.complemento = dados.complemento();
+        }
+        if (dados.uf() != null){
+            this.uf = dados.uf();
+        }
+        if (dados.cep() != null){
+            this.cep = dados.cep();
         }
     }
 }
