@@ -24,7 +24,7 @@ public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(req -> {req.requestMatchers("/login").permitAll();
+        return http.csrf(csrf -> csrf.disable()).sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authorizeHttpRequests(req -> {req.requestMatchers("/login", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
             req.anyRequest().authenticated();}).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 
